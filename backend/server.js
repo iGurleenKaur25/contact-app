@@ -16,6 +16,10 @@ app.get("/", (req, res) => {
   res.send("API running");
 });
 
+const contactRoutes = require("./routes/contactRoutes");
+app.use("/api/contacts", contactRoutes);
+
+
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
