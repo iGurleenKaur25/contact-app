@@ -17,7 +17,7 @@ function ContactForm({ onAdd }) {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    await axios.post("https://contact-backend.onrender.com/api/contacts", form);
+    await axios.post("https://contact-app-fjvv.onrender.com/api/contacts", form);
     setSuccess("Contact added successfully");
     setForm({ name: "", email: "", phone: "", message: "" });
     onAdd();
