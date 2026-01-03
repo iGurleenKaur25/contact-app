@@ -5,6 +5,7 @@ A simple contact management web application built using the MERN stack.
 ## Features
 - Add contact
 - View contacts
+- update contact
 - MongoDB database
 - REST API using Express
 
@@ -14,5 +15,5 @@ A simple contact management web application built using the MERN stack.
 - Database: MongoDB
 
 ## Live Demo
-https://vercel.com/igurleenkaur25s-projects/contact-apppp/7ZGpYcdFhgw97vAKWruJvNecXjPR
+https://contact-apppp-git-main-igurleenkaur25s-projects.vercel.app/
 
