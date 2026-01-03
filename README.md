@@ -15,5 +15,5 @@ A simple contact management web application built using the MERN stack.
 - Database: MongoDB
 
 ## Live Demo
-https://contact-apppp-git-main-igurleenkaur25s-projects.vercel.app/
+https://contact-apppp-g3qysgih5-igurleenkaur25s-projects.vercel.app/
 
