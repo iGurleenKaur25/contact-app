@@ -8,7 +8,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000", // allow local testing
-    "https://contact-apppp-git-main-igurleenkaur25s-projects.vercel.app" // allow your Vercel frontend
+    "https://contact-apppp-git-main-igurleenkaur25s-projects.vercel.app" 
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
 }));

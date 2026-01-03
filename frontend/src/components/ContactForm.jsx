@@ -10,6 +10,7 @@ function ContactForm({ onAdd }) {
   });
 
   const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,22 +18,39 @@ function ContactForm({ onAdd }) {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    await axios.post("https://contact-app-fjvv.onrender.com/api/contacts", form);
-    setSuccess("Contact added successfully");
-    setForm({ name: "", email: "", phone: "", message: "" });
-    onAdd();
-    setTimeout(() => setSuccess(""), 2000);
+    setError("");
+    setSuccess("");
+
+    try {
+      const res = await axios.post(
+        "https://contact-app-fjvv.onrender.com/api/contacts",
+        form,
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
+
+      console.log("Added:", res.data);
+
+      setSuccess("Contact added successfully");
+      setForm({ name: "", email: "", phone: "", message: "" });
+      onAdd();
+
+      setTimeout(() => setSuccess(""), 2000);
+    } catch (err) {
+      console.error("Add contact error:", err);
+      setError("Failed to add contact");
+    }
   };
 
   return (
     <div className="card p-4 mb-4 shadow-sm">
       <h5 className="mb-3">Add Contact</h5>
 
-      {success && (
-        <div className="alert alert-success py-2">
-          {success}
-        </div>
-      )}
+      {success && <div className="alert alert-success">{success}</div>}
+      {error && <div className="alert alert-danger">{error}</div>}
 
       <form onSubmit={submitForm}>
         <input
