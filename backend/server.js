@@ -5,7 +5,13 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000", // allow local testing
+    "https://contact-apppp-git-main-igurleenkaur25s-projects.vercel.app" // allow your Vercel frontend
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+}));
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
