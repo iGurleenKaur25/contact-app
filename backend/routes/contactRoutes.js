@@ -20,5 +20,33 @@ router.get("/", async (req, res) => {
   res.json(contacts);
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const updated = await Contact.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.json(updated);
+  } catch (error) {
+    res.status(500).json({ message: "Update failed" });
+  }
+});
+
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const contact = await Contact.findById(req.params.id);
+    if (!contact) {
+      return res.status(404).json({ message: "Contact not found" });
+    }
+    await contact.deleteOne();
+    res.json({ message: "Contact deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting contact" });
+  }
+});
+
+
 module.exports = router;
 
